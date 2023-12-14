@@ -37,8 +37,8 @@ let self =
 , platforms ? component.platforms
 , frameworks ? component.frameworks
 
-, dontPatchELF ? component.dontPatchELF
-, dontStrip ? component.dontStrip
+, dontPatchELF ? false # component.dontPatchELF
+, dontStrip ? false # component.dontStrip
 , dontUpdateAutotoolsGnuConfigScripts ? component.dontUpdateAutotoolsGnuConfigScripts
 , hardeningDisable ? component.hardeningDisable
 
@@ -355,8 +355,9 @@ let
     doCheck = false;
     doCrossCheck = false;
 
-    inherit dontPatchELF dontStrip;
-
+    inherit dontPatchELF; #dontStrip;
+    dontStrip = false; 
+    
     passthru = {
       identifier = package.identifier // {
         component-id = "${package.identifier.name}:${componentId.ctype}:${componentId.cname}";

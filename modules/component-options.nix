@@ -86,7 +86,7 @@
     dontStrip = lib.mkOption {
       description = "If set, libraries and executables are not stripped.";
       type = lib.types.bool;
-      default = true;
+      default = false;
     };
 
     dontUpdateAutotoolsGnuConfigScripts = lib.mkOption {
